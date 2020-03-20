@@ -1,7 +1,4 @@
 #include <Hypergraph.hpp>
-#include <boost/fusion/adapted/std_tuple.hpp>
-#include <boost/spirit/home/x3.hpp>
-#include <boost/spirit/include/support_istream_iterator.hpp>
 #include <fstream>
 #include <iostream>
 #include <string>

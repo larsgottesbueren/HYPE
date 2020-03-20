@@ -25,10 +25,10 @@ endif()
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #link static
-set(Boost_USE_STATIC_LIBS   ON)
+#set(Boost_USE_STATIC_LIBS   ON)
 
 # use boose program options
-find_package(Boost 1.40 COMPONENTS program_options REQUIRED)
+#find_package(Boost 1.40 COMPONENTS program_options REQUIRED)
 
 # needed for multithreading
 find_package (Threads)
@@ -45,10 +45,10 @@ add_executable(HYPE
 
 # make headers available
 target_include_directories(HYPE PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${Boost_INCLUDE_DIR})
+    ${CMAKE_CURRENT_SOURCE_DIR}/include)
+    #${Boost_INCLUDE_DIR})
 
 #link against boost and thread libs
 target_link_libraries(HYPE LINK_PUBLIC
-  ${Boost_LIBRARIES}
+  #${Boost_LIBRARIES}
   ${CMAKE_THREAD_LIBS_INIT})

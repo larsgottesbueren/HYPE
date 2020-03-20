@@ -3,7 +3,7 @@
 #include <Partition.hpp>
 #include <Partitioning.hpp>
 #include <SSet.hpp>
-#include <boost/program_options.hpp>
+//#include <boost/program_options.hpp>
 #include <iostream>
 #include <string>
 
@@ -11,8 +11,11 @@
 auto main(int argc, char const* argv[])
     -> int
 {
+    
+ /*
     namespace po = boost::program_options;
 
+    
     po::options_description description{"HYPE - Hypergraph Partitioner using Neighbourhood Heuristics"};
 
 
@@ -89,8 +92,27 @@ auto main(int argc, char const* argv[])
     auto output = vm["output"].as<bool>();
     auto numb_of_can = vm["nh-expand-candidates"].as<std::size_t>();
     auto seed = vm["seed"].as<std::uint32_t>();
+*/
+ 
+ 
+	// defaults
+	auto format = part::ParsingMode::Hmetis;
+	size_t ssize = 10;
+	double percent = 0.0;
+	auto numb_of_neigs_flag = part::NodeHeuristicMode::Cached;
+	auto node_select_flag = part::NodeSelectionMode::NextBest;
+	bool raw = false;
+	bool output = false;
+	size_t numb_of_can = 2;
+	uint32_t seed = 0;		// apparently other seeds don't work as well, so include it in the defaults
+	
+	if (argc != 3) {
+		throw std::runtime_error("Usage ./HYPE hypergraph_file num_parts");
+	}
+	std::string input_path = argv[1];
+	size_t partitions = std::stoul(argv[2]);
 
-
+    
 
     if(!raw) {
         std::cout << "----------------------------------------------------------------------------\n"
